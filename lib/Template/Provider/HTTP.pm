@@ -175,6 +175,14 @@ sub _template_content {
 
 L<Template::Provider> - which this module inherits from.
 
+=head1 BUGS AND REPO
+
+This code is hosted on GitHub:
+
+code: https://github.com/evdb/template-provider-http
+
+bugs: https://github.com/evdb/template-provider-http/issues
+
 =head1 AUTHOR
 
 Edmund von der Burg C<<evdb@ecclestoad.co.uk>>
