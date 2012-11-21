@@ -1,5 +1,7 @@
 # Template::Provider::HTTP
 
+[![Build Status](https://secure.travis-ci.org/evdb/template-provider-http.png?branch=master)](https://travis-ci.org/evdb/template-provider-http)
+
 This module lets you fetch templates from a webserver.
 
 For docs please see [the Template::Provider::HTTP page on search.cpan.org](http://search.cpan.org/dist/Template-Provider-HTTP/lib/Template/Provider/HTTP.pm).

@@ -12,6 +12,14 @@ our $VERSION = 0.02;
 
 Template::Provider::HTTP - fetch templates from a webserver
 
+=begin html
+
+<a href="https://travis-ci.org/evdb/template-provider-http">
+  <img src="https://secure.travis-ci.org/evdb/template-provider-http.png?branch=master" alt="Build status" />
+</a>
+
+=end html
+
 =head1 SYNOPSIS
 
     use Template;
