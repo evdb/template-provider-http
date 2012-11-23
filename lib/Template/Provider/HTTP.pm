@@ -6,7 +6,7 @@ use warnings;
 
 use LWP::UserAgent;
 
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 =head1 NAME
 
@@ -203,6 +203,8 @@ Edmund von der Burg C<<evdb@ecclestoad.co.uk>>
 
 Developed whilst working at Foxtons for an internal system there and released
 with their blessing.
+
+Kevin Kane (https://github.com/klkane) added support for C<ABSOLUTE => 1>.
 
 =head1 GOD SPEED
 
