@@ -220,6 +220,9 @@ sub _template_content {
                 $_ =~ s/$path/$domain$path/g; $_ } @lines;
         }
 
+        @lines = map { local $_ = $_;
+            $_ =~ s/($domain)+/$domain/g; $_ } @lines;
+
         $data = join( "\n", @lines );        
     }
 
