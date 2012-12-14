@@ -203,27 +203,24 @@ sub _template_content {
         my @path_chunks = split( /\/+/, $urlbase );
         my $domain = "http://" . $path_chunks[1];
 
-        my @lines = split( "\n", $data );
-        my @replacers = grep { $_ && !/^(http)/i } 
-            map{ $_ && m/(href="|src="|action=")(.*?)"/i; $2 } @lines;
+        my @dbl_matches = $data =~ m/"([^ ]+)"/g;
+        my @sgl_matches = $data =~ m/'([^ ]+)'/g;
 
-        my %relatives = map{ $_, 1 } grep { $_ && /^\./ } @replacers;
-        my %path_minus_domain = map{ $_, 1} grep { $_ && /^\// } @replacers;
-
-        foreach my $path ( keys %relatives ) { 
-            @lines = map { local $_ = $_; 
-                $_ =~ s/$path/$urlbase$path/g; $_ } @lines;
+        foreach my $path ( grep { $_ && /^\./ } @dbl_matches ) {
+            $data =~ s/"$path"/"$urlbase$path"/g;
+        }
+        
+        foreach my $path ( grep { $_ && /^\./ } @sgl_matches ) {
+            $data =~ s/'$path'/'$urlbase$path'/g;
         }
 
-        foreach my $path ( keys %path_minus_domain ) { 
-            @lines = map { local $_ = $_; 
-                $_ =~ s/$path/$domain$path/g; $_ } @lines;
+        foreach my $path ( grep { $_ && /^\// } @dbl_matches ) {
+            $data =~ s/"$path"/"$domain$path"/g;
         }
-
-        @lines = map { local $_ = $_;
-            $_ =~ s/($domain)+/$domain/g; $_ } @lines;
-
-        $data = join( "\n", @lines );        
+        
+        foreach my $path ( grep { $_ && /^\// } @sgl_matches ) {
+            $data =~ s/'$path'/'$domain$path'/g;
+        }
     }
 
     return wantarray
